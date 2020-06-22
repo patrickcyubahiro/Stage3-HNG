@@ -1,7 +1,5 @@
-exports.findById = [
-con.query("SELECT mda_name, expense, date FROM DATABASE_NAME", function (err, mda_name)) {
-if (err) throw err;
-console.log('The mda name that contracted the project:');
-console.log(mda_name);
-}
-]
+Expenses.find({}).populate("mdas").populate("companies").then( function (expense){
+    res.json({status: Success,
+          message: Data retrieved,
+           data: {expense.expenseDesc,expense.Amount,expense.mda.name,expense.companies.name}});
+})
